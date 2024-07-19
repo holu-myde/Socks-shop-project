@@ -3,9 +3,9 @@ name: ci
 on:
   push:
     branches:
-    - "*"  # run for branches
+    - ""  # run for branches
     tags:
-    - "*"  # run for tags
+    - ""  # run for tags
 
 jobs:
   #
