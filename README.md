@@ -186,7 +186,7 @@ Grafana will be exposed through a Load Balancer using the following command:
 
 The external IP of the Grafana external service will be used to access the dashboard. See screenshots below. 
 
-<img src="Images/Grafana dahboard 1.JPG">
+<img src="Images/Grafana dashboard 1.JPG">
 <img src="Images/Grafana 2.JPG">
 <img src="Images/Grafana 3.JPG">
 <img src="Images/Grafana 4.JPG">
