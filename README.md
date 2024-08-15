@@ -158,7 +158,9 @@ The prometheus server will be exposed through a Load Balancer using the followin
 
 <img src="Images/Prometheus 2.JPG">
 
-The external IP of the Prometheus external server will then be used to configure Grafana
+The external IP of the Prometheus external server will then be used as data source to configure Grafana
+
+<img src="Images/Adding data source to Grafana.JPG">
 
 - **Grafana**
 
@@ -201,6 +203,31 @@ We will use the ELK stack to collect and analyze logs from the Socks Shop applic
 
 The application will be secured with HTTPS using a Let's Encrypt certificate. Let's Encrypt is a free, automated, and open certificate authority that provides free SSL/TLS certificates for websites. The certificate will be used to secure the communication between the client and the Socks-Shop application, ensuring that the data is encrypted and secure.
 
+- First, install Cert Manager using helm by running the commands below
+
+      helm repo add jetstack https://charts.jetstack.io
+      helm install \
+      cert-manager jetstack/cert-manager \
+      --namespace cert-manager \
+      --create-namespace \
+      --version v1.15.2 \
+      --set crds.enabled=true
+
+The image below shows successful installation
+
+<img src="Images/Cert-manager Installation.JPG">
+  
+- Create a ClusterIssuer resource (using a YAML file) to configure Cert-Manager to use Let's Encrypt. 
+- Create a Certificate resource (using a YAML file) to request a certificate for your domain.
+- Create an Ingress resource (using a YAML file) to expose your service and configure TLS.
+
+Apply the files by running the commands below.
+
+    kubectl apply -f Security/Certificate.yaml
+    kubectl apply -f Security/ClusterIssuer.yaml
+
+You can leverage the [Cert Manager Documentation](https://cert-manager.io/docs/)  to see examples of these files.
+
 ## **Conclusion:**
 
 This project will provide hands-on experience with Infrastructure as Code, Kubernetes, DevOps best practices, and cloud security. It will also demonstrate the value of automation and monitoring in ensuring the reliability and performance of microservices-based applications. By the end of the project, you will have a fully functional deployment pipeline for the Socks Shop application, including infrastructure provisioning, monitoring, logging, and security.
@@ -210,6 +237,7 @@ This project will provide hands-on experience with Infrastructure as Code, Kuber
 - [Terraform Documentation](https://www.terraform.io/docs/index.html)
 - [AWS Documentation](https://docs.aws.amazon.com/index.html)
 - [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [Cert Manager Documentation](https://cert-manager.io/docs/)
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [ELK Stack Documentation](https://www.elastic.co/guide/index.html)
 - [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html)
