@@ -229,6 +229,12 @@ Apply the files by running the commands below.
 
 You can leverage the [Cert Manager Documentation](https://cert-manager.io/docs/)  to see examples of these files.
 
+The images below show the successful creation of the cluster issuer, certificate and ingress.
+
+<img src="Images/Cluster Issuer creation.JPG">
+<img src="Images/Certificate created.JPG">
+<img src="Images/ingress created.JPG">
+
 ## **Conclusion:**
 
 This project will provide hands-on experience with Infrastructure as Code, Kubernetes, DevOps best practices, and cloud security. It will also demonstrate the value of automation and monitoring in ensuring the reliability and performance of microservices-based applications. By the end of the project, you will have a fully functional deployment pipeline for the Socks Shop application, including infrastructure provisioning, monitoring, logging, and security.
