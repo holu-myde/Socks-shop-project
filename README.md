@@ -91,21 +91,24 @@ The command below allows us to configure the kubectl to connect to the AKS clust
 
     <img src="Images/App deployment to K8s cluster.JPG">
 
-8.  You can use the kubeconfig file to access the Kubernetes cluster and deploy the Socks Shop application.
+8.  You can use the following commands to verify that the Socks Shop application is running on the Kubernetes cluster:
 
-    <img src="Images/all-pods.png">
+        kubectl get pods
 
-9.  You can also use the following command to verify that the Socks Shop application is running on the Kubernetes cluster:
+    <img src="Images/Running pods.JPG">
 
-        kubectl get all -A
+        kubectl get svc
+    <img src="Images/Services running.JPG">
 
-    <img src="Images/get-pods-A.png">
+10. After you confirm that your pods are running, you can test the application by copying the external IP of the frontend service (type- Load Balancer) into your browser.
 
-10. After we confirm that our pods are running, we can now test the application by port-forwarding the service to our local machine using the following command:
+    <img src="Images/Frontend via the loadbalancer external IP.JPG">
 
-        kubectl port-forward service/front-end -n sock-shop 30001:80
+11. To serve the frontend via a custom domain, you need to obtain a custom domain from a provider then create A records to point your custom domain name to the external IP of the front end service (see example of namecheap DNS configuration and how application was served via custom domain below).
 
-    <img src="Images/frontend.png">
+    <img src="Images/A-records created and pointing to the LoadBalancer external IP.JPG">
+
+    <img src="Images/App hosted with my domain name - unsecured.JPG">
 
 
 ## **Project Objectives:**
