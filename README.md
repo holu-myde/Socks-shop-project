@@ -79,17 +79,17 @@ Below is a screenshot of my AKS cluster being provisioned by terraform👇🏽:
 
   <img src="Images/K8s deployment.JPG">
 
-This below command allow us to configure the kubectl to connect to the EKS cluster, the specified region and the cluster name.
+The command below allows us to configure the kubectl to connect to the AKS cluster.
 
-    aws eks update-kubeconfig --name=socksShop-eks-U2VM9 --region=us-east-2
+    az aks update-kubeconfig --name=sock-shop
 
-7.  After the infrastructure has been provisioned, you will see the output of the Terraform apply command, including the EKS cluster endpoint and the kubeconfig file.
+7.  After the infrastructure has been provisioned, you will see the output of the Terraform apply command, including the AKS cluster endpoint and the kubeconfig file.
 
 - We apply our deployment manifests to our cluster using the following command:
 
-        kubectl apply -f kubernetes/deployment.yaml
+        kubectl create -f Kubernetes/deployment.yaml
 
-    <img src="Images/apply-deployment.png">
+    <img src="Images/App deployment to K8s cluster.JPG">
 
 8.  You can use the kubeconfig file to access the Kubernetes cluster and deploy the Socks Shop application.
 
