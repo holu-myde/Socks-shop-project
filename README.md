@@ -118,5 +118,54 @@ The command below allows us to configure the kubectl to connect to the AKS clust
 
     <img src="Images/App hosted with my domain name - unsecured.JPG">
 
+## **Deployment Pipeline:**
 
+The deployment pipeline will be configured using a GitHub Actions workflow file, which will define the steps required to build and deploy the Socks Shop application. The workflow file will be triggered by a push to the main branch of the repository, and will include the following steps:
+
+Our workflow file must be in our root directory for our GitHub Actions to detect the file automatically.
+
+- Checkout the source code from the repository
+- Build the Docker images for the Socks Shop application
+- Deploy the Socks Shop application to the Kubernetes cluster
+
+The deployment pipeline will be configured to run automatically whenever changes are pushed to the main branch of the repository, ensuring that the Socks Shop application is always up to date and running the latest version.
+
+## **Monitoring**
+
+Prometheus will be used to monitor the performance and health of the Socks Shop application. This will include metrics such as request latency, error rate, and request volume. The Prometheus server will be configured to scrape metrics from the Socks Shop application and store them in a time-series database. Grafana will be used to visualize the metrics and create dashboards to monitor the performance and health of the application.
+
+First create the monitoring namespace using the `00-monitoring-ns.yaml` file:
+
+    kubectl create -f 00-monitoring-ns.yaml
+
+- **Prometheus**
+
+To deploy simply apply all the prometheus manifests (01-10) in any order:
+
+    kubectl apply $(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')
+
+The prometheus server will be exposed on Nodeport `31090` using the following command:
+
+    kubectl port-forward service/prometheus 31090:9090 -n monitoring
+
+<img src="Images/prometheus.png">
+
+- **Grafana**
+
+First apply the grafana manifests from 20 to 22:
+
+    kubectl apply $(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)
+
+Once the grafana pod is in the Running state apply the `23-grafana-import-dash-batch.yaml` manifest to import the Dashboards:
+
+    kubectl apply -f 23-grafana-import-dash-batch.yaml
+
+Grafana will be exposed on the NodePort `31300` using the following command:
+
+    kubectl port-forward service/grafana 31300:3000 -n monitoring
+
+- Below is the screenshot:👇🏽
+  <img src="Images/grafana-sockshop.png">
+
+    <img src="Images/prometheus-pod-resources.png">
 
