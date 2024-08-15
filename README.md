@@ -193,4 +193,28 @@ The external IP of the Grafana external service will be used to access the dashb
 <img src="Images/Grafana 5.JPG">
 <img src="Images/Grafana 6.JPG">
 
+## **Logging:**
+
+We will use the ELK stack to collect and analyze logs from the Socks Shop application. The ELK stack is a collection of three open-source products — Elasticsearch, Logstash, and Kibana — all developed, managed, and maintained by Elastic. The ELK Stack is used to collect, search, analyze, and visualize log data in real time.
+
+## **Security:**
+
+The application will be secured with HTTPS using a Let's Encrypt certificate. Let's Encrypt is a free, automated, and open certificate authority that provides free SSL/TLS certificates for websites. The certificate will be used to secure the communication between the client and the Socks-Shop application, ensuring that the data is encrypted and secure.
+
+## **Conclusion:**
+
+This project will provide hands-on experience with Infrastructure as Code, Kubernetes, DevOps best practices, and cloud security. It will also demonstrate the value of automation and monitoring in ensuring the reliability and performance of microservices-based applications. By the end of the project, you will have a fully functional deployment pipeline for the Socks Shop application, including infrastructure provisioning, monitoring, logging, and security.
+
+## **References:**
+
+- [Terraform Documentation](https://www.terraform.io/docs/index.html)
+- [AWS Documentation](https://docs.aws.amazon.com/index.html)
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [Prometheus Documentation](https://prometheus.io/docs/)
+- [ELK Stack Documentation](https://www.elastic.co/guide/index.html)
+- [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html)
+- [Let's Encrypt Documentation](https://letsencrypt.org/docs/)
+- [Docker Documentation](https://docs.docker.com/)
+- [Socks Shop Application](https://github.com/microservices-demo/microservices-demo.github.io)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
