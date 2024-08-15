@@ -242,7 +242,7 @@ This project will provide hands-on experience with Infrastructure as Code, Kuber
 ## **References:**
 
 - [Terraform Documentation](https://www.terraform.io/docs/index.html)
-- [AWS Documentation](https://docs.aws.amazon.com/index.html)
+- [Azure Documentation](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-terraform?pivots=development-environment-azure-cli)
 - [Kubernetes Documentation](https://kubernetes.io/docs/home/)
 - [Cert Manager Documentation](https://cert-manager.io/docs/)
 - [Prometheus Documentation](https://prometheus.io/docs/)
