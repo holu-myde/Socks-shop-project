@@ -59,7 +59,7 @@ Using Terraform, we will provision the necessary infrastructure resources on Azu
 
 3.  Git clone this repository and navigate to the terraform folder to have the Terraform configuration files and initiate the Terraform project.
 
-        git clone https://github.com/ogdmerlin/Socks-Shop/Terraform
+        git clone https://github.com/holu-myde/Socks-shop-project/tree/main/Sock-shop/Terraform
 
 4.  Run the following command to initialize the Terraform project:
 
@@ -75,9 +75,9 @@ Using Terraform, we will provision the necessary infrastructure resources on Azu
 
         #the flag --auto-approve can be added to avoid the prompt for confirmation.
 
-Below is a screenshot of my EKS cluster being provisioned by terraform👇🏽:
+Below is a screenshot of my AKS cluster being provisioned by terraform👇🏽:
 
-  <img src="Images/eks.png">
+  <img src="Images/K8s deployment.JPG">
 
 This below command allow us to configure the kubectl to connect to the EKS cluster, the specified region and the cluster name.
 
