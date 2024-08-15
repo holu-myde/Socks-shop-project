@@ -8,6 +8,14 @@ This project will involve deploying the Socks Shop application on a Kubernetes c
 
 The project will be implemented using Terraform for infrastructure provisioning, GitHub Actions for the deployment pipeline, Kubernetes for container orchestration, Helm for package management, Prometheus for monitoring, ELK Stack for logging, and Ansible for security.
 
+## **Project Objectives:**
+
+- Deploy the Socks Shop application on a Kubernetes cluster using an Infrastructure as Code (IaC) approach
+- Provision the necessary infrastructure resources using a preferred cloud provider (I will be using Azure in this case)
+- Set up a deployment pipeline using GitHub Actions to build and deploy the Socks Shop application to the Kubernetes cluster
+- Monitor the performance and health of the Socks Shop application using Prometheus
+- Collect and analyze logs from the Socks Shop application using a centralized logging solution, such as the ELK stack.
+
 ## **This project documentation has the following sections:**
 
 - [Infrastructure Provisioning](#infrastructure-provisioning)
@@ -111,10 +119,4 @@ The command below allows us to configure the kubectl to connect to the AKS clust
     <img src="Images/App hosted with my domain name - unsecured.JPG">
 
 
-## **Project Objectives:**
 
-- Deploy the Socks Shop application on a Kubernetes cluster using an Infrastructure as Code (IaC) approach
-- Provision the necessary infrastructure resources using a preferred cloud provider (I will be using Azure in this case)
-- Set up a deployment pipeline using GitHub Actions to build and deploy the Socks Shop application to the Kubernetes cluster
-- Monitor the performance and health of the Socks Shop application using Prometheus
-- Collect and analyze logs from the Socks Shop application using a centralized logging solution, such as the ELK stack.
