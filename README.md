@@ -225,6 +225,7 @@ Apply the files by running the commands below.
 
     kubectl apply -f Security/Certificate.yaml
     kubectl apply -f Security/ClusterIssuer.yaml
+    kubectl apply -f Security/ingress.yaml
 
 You can leverage the [Cert Manager Documentation](https://cert-manager.io/docs/)  to see examples of these files.
 
