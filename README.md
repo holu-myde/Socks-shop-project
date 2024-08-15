@@ -134,38 +134,63 @@ The deployment pipeline will be configured to run automatically whenever changes
 
 Prometheus will be used to monitor the performance and health of the Socks Shop application. This will include metrics such as request latency, error rate, and request volume. The Prometheus server will be configured to scrape metrics from the Socks Shop application and store them in a time-series database. Grafana will be used to visualize the metrics and create dashboards to monitor the performance and health of the application.
 
-First create the monitoring namespace using the `00-monitoring-ns.yaml` file:
-
-    kubectl create -f 00-monitoring-ns.yaml
-
 - **Prometheus**
+
+First install Prometheus using helm by running each of the commands below.
+
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+    helm repo update
+
+    helm install prometheus prometheus-community/prometheus
 
 To deploy simply apply all the prometheus manifests (01-10) in any order:
 
     kubectl apply $(ls *-prometheus-*.yaml | awk ' { print " -f " $1 } ')
 
-The prometheus server will be exposed on Nodeport `31090` using the following command:
+The image below shows successful installation and deployment
 
-    kubectl port-forward service/prometheus 31090:9090 -n monitoring
+<img src="Images/Prometheus installation and deployment.JPG">
 
-<img src="Images/prometheus.png">
+The prometheus server will be exposed through a Load Balancer using the following command:
+
+    kubectl expose service prometheus-server --type=LoadBalancer --target-port=9090 --name=prometheus-server-ext
+
+<img src="Images/Prometheus 2.JPG">
+
+The external IP of the Prometheus external server will then be used to configure Grafana
 
 - **Grafana**
 
-First apply the grafana manifests from 20 to 22:
+First install Grafana using helm by running each of the commands below
+
+    helm repo add grafana https://grafana.github.io/helm-charts
+
+    helm repo update
+
+    helm install grafana grafana/grafana
+
+Then apply the grafana manifests:
 
     kubectl apply $(ls *-grafana-*.yaml | awk ' { print " -f " $1 }'  | grep -v grafana-import)
 
-Once the grafana pod is in the Running state apply the `23-grafana-import-dash-batch.yaml` manifest to import the Dashboards:
+The image below shows successful installation and deployment
 
-    kubectl apply -f 23-grafana-import-dash-batch.yaml
+<img src="Images/Grafana installed and deployed.JPG">
 
-Grafana will be exposed on the NodePort `31300` using the following command:
+Grafana will be exposed through a Load Balancer using the following command:
 
-    kubectl port-forward service/grafana 31300:3000 -n monitoring
+    kubectl expose service grafana — type=LoadBalancer — target-port=3000 — name=grafana-ext
 
-- Below is the screenshot:👇🏽
-  <img src="Images/grafana-sockshop.png">
+<img src="Images/Grafana details.JPG">
 
-    <img src="Images/prometheus-pod-resources.png">
+The external IP of the Grafana external service will be used to access the dashboard. See screenshots below. 
+
+<img src="Images/Grafana dahboard 1.JPG">
+<img src="Images/Grafana 2.JPG">
+<img src="Images/Grafana 3.JPG">
+<img src="Images/Grafana 4.JPG">
+<img src="Images/Grafana 5.JPG">
+<img src="Images/Grafana 6.JPG">
+
 
